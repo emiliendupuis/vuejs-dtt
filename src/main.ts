@@ -13,5 +13,5 @@ new Vue({ // defining our vue and rendering the app into it . We have to include
   router,
   store,
   el: '#app',
-  render: (h) => h(App), //h, un alias pour la fonction createElement | indique le composant à construire
-})
+  render: (h) => h(App), // h, un alias pour la fonction createElement | indique le composant à construire
+});

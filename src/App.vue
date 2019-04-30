@@ -1,24 +1,24 @@
 <template>
-  <div id="app"> <!-- i decided to put the menu directly in the app.vue so we do not have to import it in every components -->
-    <div id="navbar">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light"> <!-- i'm using bootstrap for this navbar -->
-        <a class="navbar-brand" href="#">Welcome</a>
+  <div id='app'> <!-- i decided to put the menu directly in the app.vue so we do not have to import it in every components -->
+    <div id='navbar'>
+      <nav class='navbar navbar-expand-lg navbar-light bg-light'> <!-- i'm using bootstrap for this navbar -->
+        <a class='navbar-brand' href='#'>Welcome</a>
         <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          class='navbar-toggler'
+          type='button'
+          data-toggle='collapse'
+          data-target='#navbarNavAltMarkup'
+          aria-controls='navbarNavAltMarkup'
+          aria-expanded='false'
+          aria-label='Toggle navigation'
         >
-          <span class="navbar-toggler-icon"></span>
+          <span class='navbar-toggler-icon'></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <router-link class="nav-item nav-link" to="/">Home</router-link>
-            <router-link class="nav-item nav-link" to="/Random">Random</router-link>
-            <router-link class="nav-item nav-link" to="/Categories">Categories</router-link>
+        <div class='collapse navbar-collapse' id='navbarNavAltMarkup'>
+          <div class='navbar-nav'>
+            <router-link class='nav-item nav-link' to='/'>Home</router-link>
+            <router-link class='nav-item nav-link' to='/Random'>Random</router-link>
+            <router-link class='nav-item nav-link' to='/Categories'>Categories</router-link>
           </div>
         </div>
       </nav>
@@ -31,7 +31,7 @@
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

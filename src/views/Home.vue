@@ -1,23 +1,23 @@
 <template>
-  <div class="home" v-if="info">
-    <table class="table-fill tablesorter" id="myTable">
+  <div class='home' v-if='info'>
+    <table class='table-fill tablesorter table-responsive' id='myTable' >
       <thead>
         <tr>
-          <th @click="Sort()" class="text-center">{{ gridColumns[0] }}</th>
-          <th @click="Sort()" class="text-center">{{ gridColumns[1] }}</th>
-          <th class="text-center">{{ gridColumns[2] }}</th>
+          <th @click='Sort()' class='text-center'>{{ gridColumns[0] }}</th>
+          <th @click='Sort()' class='text-center'>{{ gridColumns[1] }}</th>
+          <th class='text-center'>{{ gridColumns[2] }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in info.data.entries.slice(0,10)">
-          <td class="text-center">{{ item.API }}</td>
-          <td class="text-center">{{ item.Description }}</td>
-          <td class="text-center">
+        <tr v-for='item in info.data.entries.slice(0,10)'>
+          <td class='text-center'>{{ item.API }}</td>
+          <td class='text-center'>{{ item.Description }}</td>
+          <td class='text-center'>
             <button
-              v-on:click="Description =  item.Description"
-              @click="getDescription(Description)"
+              v-on:click='Title =  item.API'
+              @click='getTitle(Title)'
             >
-              <router-link to="/Detailpage">Details</router-link>
+              <router-link to='/Detailpage'>Details</router-link>
             </button>
           </td>
         </tr>
@@ -27,45 +27,44 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator"; // import Vue, Component, Prop 
-import axios from "axios"; // Allows to make API Calls
-import VueAxios from "vue-axios"; // Allows to make API Calls
-import store from "@/store"; 
-import Footer from "@/Components/Footer.vue"; // Footer of the page
-import $ from "jquery";
-import "datatables.net"; // Used for DataTable function. Sort the API response. 
+<script lang='ts'>
+import { Component, Prop, Vue } from 'vue-property-decorator'; // import Vue, Component, Prop
+import axios from 'axios'; // Allows to make API Calls
+import VueAxios from 'vue-axios'; // Allows to make API Calls
+import store from '@/store';
+import Footer from '@/Components/Footer.vue'; // Footer of the page
+import $ from 'jquery';
+import 'datatables.net'; // Used for DataTable function. Sort the API response.
 
 @Component({
   components: {
-    Footer // Insert the footer in the component
-  }
+    Footer, // Insert the footer in the component
+  },
 })
 export default class Home extends Vue {
-  Sort() // Sort function using Jquery
-  {
-    $("#myTable").DataTable({ // Jquery syntax
+public gridColumns: string[] = ['API', 'Description', 'View more'];
+public Title: string = ''; // defining empty variable with typescript standards
+public info: any = null;
+
+public created() { // Load data we need to display on the DOM
+    axios // api call with axios
+    .get('https://api.publicapis.org/entries')
+    .then((response) => (this.info = response));
+  }
+
+public getTitle(Title: any) {
+    // Change the state variable (Description)
+    this.$store.commit('change', this.Title);
+  }
+
+private Sort() { // Sort function using Jquery
+    $('#myTable').DataTable({ // Jquery syntax
       paging: false, // Parameters. Disable paging, searching and info.
       searching: false,
       info: false,
-      retrieve: true 
+      retrieve: true,
+      responsive: true,
     });
-  }
-
-  gridColumns: string[] = ["API", "Description", "View more"]
-  Description: string = "" // defining empty variable with typescript standards
-  info: any = null;
-
-  created() // Load data we need to display on the DOM
-  {
-    axios // api call with axios
-      .get("https://api.publicapis.org/entries")
-      .then(response => (this.info = response));
-  }
-
-  getDescription() {
-    // Change the state variable (Description)
-    this.$store.commit("change", this.Description);
   }
 }
 </script>
@@ -98,13 +97,27 @@ div.table-title {
   font-size: 30px;
   font-weight: 400;
   font-style: normal;
-  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-family: 'Roboto', helvetica, arial, sans-serif;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   text-transform: uppercase;
 }
 
 /*** Table Styles **/
-
+@media screen and (max-width: 380px)
+{
+  tbody tr td
+  {
+    font-size: 10px;
+  }
+  thead tr th 
+  {
+    font-size: 14px;
+  }
+  .Footer a
+  {
+    font-size: 14px;
+  }
+}
 .table-fill {
   background: white;
   margin: auto;
@@ -190,13 +203,13 @@ td.text-right {
 </style>
 
 <!--   
-  <li v-for="item in info.data.entries.slice(0,10)">
+  <li v-for='item in info.data.entries.slice(0,10)'>
     {{ item.API }} | {{ item.Description }}
   </li>
 
-<router-link   to="/Detailpage"><td class="text-left"><button v-on:click="Description =  item.Description"  @click="getDescription()">Details</button></td></router-link>
-    <li v-for="title in gridColumns">
-        <div class="col col-1">{{ gridColumns[0] }} </div>
-        <div class="col col-2">{{ gridColumns[1] }} </div>
+<router-link   to='/Detailpage'><td class='text-left'><button v-on:click='Description =  item.Description'  @click='getDescription()'>Details</button></td></router-link>
+    <li v-for='title in gridColumns'>
+        <div class='col col-1'>{{ gridColumns[0] }} </div>
+        <div class='col col-2'>{{ gridColumns[1] }} </div>
        </li>
   -->
