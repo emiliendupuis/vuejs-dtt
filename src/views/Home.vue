@@ -201,6 +201,19 @@ td.text-center {
 td.text-right {
   text-align: right;
 }
+button {
+  color: white;
+  padding: 5px 28px;
+  margin-top: 15px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  background-color: #3e94ec;
+  border-radius: 10px !important;
+}
+button.hover {
+  color: white;
+}
 </style>
 
 <!--   

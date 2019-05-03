@@ -2,7 +2,7 @@
   <div id='app'> <!-- i decided to put the menu directly in the app.vue so we do not have to import it in every components -->
     <div id='navbar'>
       <nav class='navbar navbar-expand-lg navbar-light bg-light'> <!-- i'm using bootstrap for this navbar -->
-        <a class='navbar-brand' href='#'>Welcome</a>
+        <a class='navbar-brand' href='#'></a>
         <button
           class='navbar-toggler'
           type='button'
