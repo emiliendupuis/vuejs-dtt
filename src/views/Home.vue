@@ -17,7 +17,7 @@
               v-on:click='Title =  item.API'
               @click='getTitle(Title)'
             >
-              <router-link to='/Detailpage'>Details</router-link>
+              Details
             </button>
           </td>
         </tr>
@@ -55,6 +55,7 @@ public created() { // Load data we need to display on the DOM
 public getTitle(Title: any) {
     // Change the state variable (Description)
     this.$store.commit('change', this.Title);
+    this.$router.push({name: 'Detailpage'});
   }
 
 private Sort() { // Sort function using Jquery
